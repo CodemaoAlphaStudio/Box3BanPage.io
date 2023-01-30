@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>封禁信息Banned</title>
+</head>
+
+<body style="background-color:black">
+    <style>
+        .info {
+            text-align: center;
+            color: white;
+        }
+
+        .box {
+            margin: 0 auto;
+        }
+    </style>
+    <div class="box">
+        <h1 class="info">You Has Been Banned On This Server!<br />你已被此服务器封禁！</h1>
+        <br />
+        <h2 class="info" id="banreason">banreason/en</h2>
+        <br />
+        <h1 class="info" id="banid">banid</h1>
+    </div>
+    <script>
+        function geturlparam() {
+            let url = window.location.href;
+            let p = url.split('?')[1];
+            let params = new URLSearchParams(p);
+            return { id: params.get("id"), reason: params.get("r"), reasonen: params.get("ren") };
+        };
+        document.getElementById("banreason").innerHTML = `Banned Reason:{geturlparam().reasonen}<br />封禁原因:${geturlparam().reason}`;
+        document.getElementById("banid").innerHTML = `Ban Id/封禁编号:${geturlparam().id}`;
+    </script>
+</body>
+
+</html>
